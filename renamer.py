@@ -3,7 +3,7 @@ import string
 import argparse
 
 
-def substring_in_filename(c, filename):
+def char_in_filename(c, filename):
     # this checks to see if a character is in a filename but not the file
     # extension. file extension is are the characters after the last period in
     # the filename
@@ -21,7 +21,7 @@ def rename_files(args):
 
     for root, subdirs, files in os.walk('.'):
         for f in files:
-            if target in f:
+            if char_in_filename(target, f):
                 cur = os.path.join(root, f)
                 new = os.path.join(root, string.replace(f, target, replacement))
                 print "Replacing '{}' with '{}'".format(cur, new)
